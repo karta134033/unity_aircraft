@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5278614466201189725}
   - component: {fileID: 7972937775923595671}
   - component: {fileID: 8747121925301114141}
+  - component: {fileID: -4810181269300482466}
   m_Layer: 0
   m_Name: Finishline
   m_TagString: Untagged
@@ -94,3 +95,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8396678379171936878, guid: 4f7cfa0d2d844f145af16c58e85fc413, type: 3}
+--- !u!114 &-4810181269300482466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477301557566089282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30dfd6505941314cb7b311d6ef91a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: {x: 0, y: 0, z: 20}
+  randomize: 0
