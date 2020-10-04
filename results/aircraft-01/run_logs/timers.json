@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1601786650",
+        "python_version": "3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\python env\\Scripts\\mlagents-learn D:\\unity project\\aircraft\\Training\\trainer_config.yaml --run-id aircraft-01 --force",
+        "mlagents_version": "0.19.0",
+        "mlagents_envs_version": "0.19.0",
+        "communication_protocol_version": "1.0.0",
+        "tensorflow_version": "2.0.0",
+        "numpy_version": "1.16.0",
+        "end_time_seconds": "1601786658"
+    },
+    "total": 8.5437249,
+    "count": 1,
+    "self": 0.21402670000000157,
+    "children": {
+        "run_training.setup": {
+            "total": 0.007000899999999977,
+            "count": 1,
+            "self": 0.007000899999999977
+        },
+        "TrainerController.start_learning": {
+            "total": 8.3226973,
+            "count": 1,
+            "self": 0.0001353000000001714,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 8.322554499999999,
+                    "count": 1,
+                    "self": 8.322554499999999
+                },
+                "TrainerController._save_models": {
+                    "total": 7.5000000006042455e-06,
+                    "count": 1,
+                    "self": 7.5000000006042455e-06
+                }
+            }
+        }
+    }
+}

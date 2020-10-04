@@ -78,7 +78,8 @@ namespace Aircraft {
                 }
 
                 Vector3 localCheckpointDir = VectorToNextCheckpoint();
-                if (localCheckpointDir.magnitude < Academy.Instance.EnvironmentParameters.GetWithDefault("checkpoint_radius", 0f)) {
+                if (localCheckpointDir.magnitude < Academy.Instance.EnvironmentParameters.GetWithDefault("checkpoint_radius", 0f)) {  
+                    // checkpoint_radius match AircraftLearning.yaml
                     GotCheckpoint();
                 }
             }
