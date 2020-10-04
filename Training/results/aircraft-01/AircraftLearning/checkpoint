@@ -1,0 +1,2 @@
+model_checkpoint_path: "AircraftLearning-0.ckpt"
+all_model_checkpoint_paths: "AircraftLearning-0.ckpt"

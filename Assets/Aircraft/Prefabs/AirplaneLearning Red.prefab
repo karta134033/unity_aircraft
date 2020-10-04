@@ -519,8 +519,9 @@ GameObject:
   - component: {fileID: 1116508030725173157}
   - component: {fileID: 986794192913543295}
   - component: {fileID: 6166198281872243787}
+  - component: {fileID: 768121231870769614}
   m_Layer: 0
-  m_Name: AirplaneLearning Blue
+  m_Name: AirplaneLearning Red
   m_TagString: agent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,6 +735,20 @@ MonoBehaviour:
   meshObject: {fileID: 1762053106350993264}
   explosionEffect: {fileID: 1480468639853793088}
   stepTimeout: 300
+--- !u!114 &768121231870769614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5100269302600235965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
 --- !u!1 &8124101469744028847
 GameObject:
   m_ObjectHideFlags: 0
