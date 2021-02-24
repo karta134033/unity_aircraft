@@ -1,0 +1,6 @@
+model_checkpoint_path: "AircraftLearning-50000236.ckpt"
+all_model_checkpoint_paths: "AircraftLearning-48499912.ckpt"
+all_model_checkpoint_paths: "AircraftLearning-48999954.ckpt"
+all_model_checkpoint_paths: "AircraftLearning-49499944.ckpt"
+all_model_checkpoint_paths: "AircraftLearning-49999980.ckpt"
+all_model_checkpoint_paths: "AircraftLearning-50000236.ckpt"
