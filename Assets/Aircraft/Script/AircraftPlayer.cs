@@ -20,12 +20,14 @@ namespace Aircraft {
             pauseInput.Enable();
         }
 
-        public override void Heuristic(float[] actionsOut) {
+        public override void Heuristic(float[] actionsOut) {   // 將使用者的輸入傳入到OnActionReceived
             float pitchValue = Mathf.Round(pitchInput.ReadValue<float>());  // pitch 1 == 上, 0 == none, -1 == 下
             float yawValue = Mathf.Round(yawInput.ReadValue<float>());  // yaw 1 == 右, 0 == none, -1 == left
             float boostValue = Mathf.Round(boostInput.ReadValue<float>());  // boost 1 == boost, 0 == none,
-            if (pitchValue == -1f) pitchValue = 2f;
-            if (yawValue == -1f) yawValue = 2f;
+            if (pitchValue == -1f) 
+                pitchValue = 2f;
+            if (yawValue == -1f) 
+                yawValue = 2f;
             
             actionsOut[0] = pitchValue;
             actionsOut[1] = yawValue;

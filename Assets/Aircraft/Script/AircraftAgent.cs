@@ -16,7 +16,7 @@ namespace Aircraft {
 
         public GameObject meshObject;  // 飛機會在爆炸時消失
         public GameObject explosionEffect;  // 爆炸時的特效
-        public int stepTimeout = 300;
+        public int stepTimeout = 300;  // 走超過300步等於超時
 
         // 需要持續監控的原件
         private AircraftArea area;
@@ -56,15 +56,21 @@ namespace Aircraft {
         }
 
         public override void OnActionReceived(float[] vectorAction) {
-            if (frozen) return;
+            if (frozen) 
+                return;
 
             pitchChange = vectorAction[0];  // 上
-            if (pitchChange == 2) pitchChange = -1f;  // 下    因為mlagent的關係，所以值會在正數 (0~正數)
-            yawChange = vectorAction[1];  // 右
-            if (yawChange == 2) yawChange = -1f;  // 左
+            if (pitchChange == 2) 
+                pitchChange = -1f;  // 下    因為mlagent的關係，所以值會在正數 (0~正數)
 
-            boost = vectorAction[2] == 1;
-            if (boost && !trail.emitting) trail.Clear();
+            yawChange = vectorAction[1];  // 右
+            if (yawChange == 2) 
+                yawChange = -1f;  // 左
+
+            boost = vectorAction[2] == 1;  // 加速與否
+
+            if (boost && !trail.emitting)  // 飛機的尾流
+                trail.Clear();
             trail.emitting = boost;
 
             ProcessMovement();
@@ -85,8 +91,8 @@ namespace Aircraft {
             }
         }
 
-        public override void CollectObservations(VectorSensor sensor) {
-            sensor.AddObservation(transform.InverseTransformDirection(rigidbody.velocity));  // Vector3
+        public override void CollectObservations(VectorSensor sensor) {  // 需要在Behavior Parameters的Vector Observation設定
+            sensor.AddObservation(transform.InverseTransformDirection(rigidbody.velocity));  // Vector3, 飛機的速度
             sensor.AddObservation(VectorToNextCheckpoint());  // Vector3
             Vector3 nextCheckpointForword = area.Checkpoints[NextCheckpointIndex].transform.forward;  // checkpoint 的方向
             sensor.AddObservation(transform.InverseTransformDirection(nextCheckpointForword));  // Vector3
@@ -109,8 +115,8 @@ namespace Aircraft {
         }
 
         private Vector3 VectorToNextCheckpoint() {
-            Vector3 nextCheckpointDir = area.Checkpoints[NextCheckpointIndex].transform.position - transform.position;
-            Vector3 localCheckpointDir = transform.InverseTransformDirection(nextCheckpointDir);
+            Vector3 nextCheckpointDir = area.Checkpoints[NextCheckpointIndex].transform.position - transform.position;  // agent 到checkpoint的距離
+            Vector3 localCheckpointDir = transform.InverseTransformDirection(nextCheckpointDir);  // world space -> local space
             return localCheckpointDir;
         }
 
@@ -126,14 +132,13 @@ namespace Aircraft {
         private void ProcessMovement() {
             float boostModifier = boost ? boostMultiplier : 1f;
             rigidbody.AddForce(transform.forward * thrust * boostModifier, ForceMode.Force);  // 向前的動力
+
             Vector3 currentRotation = transform.rotation.eulerAngles;
-            float rollAngle = currentRotation.z > 180f ? currentRotation.z - 360f : currentRotation.z;  // 計算roll angle (-180 ~ 180)
-            if (yawChange == 0) {
+            float rollAngle = currentRotation.z > 180f ? currentRotation.z - 360f : currentRotation.z;  // 計算roll angle 避免超出180 (-180 ~ 180)
+            if (yawChange == 0)
                 rollChange = -rollAngle / maxRollAngle;
-            }
-            else {
+            else
                 rollChange = -yawChange;
-            }
 
             smoothPitchChange = Mathf.MoveTowards(smoothPitchChange, pitchChange, 2f * Time.fixedDeltaTime);
             smoothYawChange = Mathf.MoveTowards(smoothYawChange, yawChange, 2f * Time.fixedDeltaTime);
@@ -142,18 +147,20 @@ namespace Aircraft {
             float pitch = currentRotation.x + smoothPitchChange * Time.fixedDeltaTime * pitchSpeed;
             float yaw = currentRotation.y + smoothYawChange * Time.fixedDeltaTime * yawSpeed;
             float roll = currentRotation.z + smoothRollChange * Time.fixedDeltaTime * rollSpeed;
-            if (pitch > 180f) pitch -= 360f;
+            if (pitch > 180f)  // 避免超出180
+                pitch -= 360f;
             pitch = Mathf.Clamp(pitch, -maxPitchAngle, maxPitchAngle);
-            if (roll > 180f) roll -= 360f;
+            if (roll > 180f) 
+                roll -= 360f;
             roll = Mathf.Clamp(roll, -maxRollAngle, maxRollAngle);
 
             transform.rotation = Quaternion.Euler(pitch, yaw, roll);
         }
 
-        private void OnTriggerEnter(Collider other) {
+        private void OnTriggerEnter(Collider other) {  // 進入collider會觸發
             if (other.transform.CompareTag("checkpoint") && 
-                other.gameObject == area.Checkpoints[NextCheckpointIndex]
-            ) {
+                other.gameObject == area.Checkpoints[NextCheckpointIndex] 
+            ) {  // 確保是"下一個" checkpoint
                 GotCheckpoint();
             }
         }

@@ -1,0 +1,47 @@
+{
+    "AircraftLearning": {
+        "checkpoints": [
+            {
+                "steps": 48499900,
+                "file_path": "results\\ppo_20210323\\AircraftLearning\\AircraftLearning-48499900.nn",
+                "reward": 25.162019044160843,
+                "creation_time": 1616546888.8827338
+            },
+            {
+                "steps": 48999979,
+                "file_path": "results\\ppo_20210323\\AircraftLearning\\AircraftLearning-48999979.nn",
+                "reward": 26.843649622272043,
+                "creation_time": 1616547367.2407384
+            },
+            {
+                "steps": 49499970,
+                "file_path": "results\\ppo_20210323\\AircraftLearning\\AircraftLearning-49499970.nn",
+                "reward": 24.76500278711319,
+                "creation_time": 1616547847.5656133
+            },
+            {
+                "steps": 49999923,
+                "file_path": "results\\ppo_20210323\\AircraftLearning\\AircraftLearning-49999923.nn",
+                "reward": 27.417136132717133,
+                "creation_time": 1616548325.21608
+            },
+            {
+                "steps": 50000563,
+                "file_path": "results\\ppo_20210323\\AircraftLearning\\AircraftLearning-50000563.nn",
+                "reward": 27.417136132717133,
+                "creation_time": 1616548326.0603712
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 50000563,
+            "file_path": "results\\ppo_20210323\\AircraftLearning.nn",
+            "reward": 27.417136132717133,
+            "creation_time": 1616548326.0603712
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.19.0",
+        "tensorflow_version": "2.0.0"
+    }
+}
