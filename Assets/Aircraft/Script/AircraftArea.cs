@@ -32,12 +32,16 @@ namespace Aircraft {
             int numCheckpoint = (int)racePath.MaxUnit(CinemachinePathBase.PositionUnits.PathUnits);
             for (int i = 0; i < numCheckpoint; i++) {
                 GameObject checkpoint;
-                if (i == numCheckpoint - 1) checkpoint = Instantiate<GameObject>(finishCheckpointPrefab);
-                else checkpoint = Instantiate<GameObject>(checkpointPrefab);
+                // if (i == numCheckpoint - 1)  // 另外設定最後一個checkpoint的樣式
+                //     checkpoint = Instantiate<GameObject>(finishCheckpointPrefab);
+                // else 
+                //     checkpoint = Instantiate<GameObject>(checkpointPrefab);
+                
+                checkpoint = Instantiate<GameObject>(checkpointPrefab);
                 checkpoint.transform.SetParent(racePath.transform);  // 將checkpoint轉向與設定位置
                 checkpoint.transform.localPosition = racePath.m_Waypoints[i].position;
                 checkpoint.transform.rotation = racePath.EvaluateOrientationAtUnit(i, CinemachinePathBase.PositionUnits.PathUnits);
-
+                checkpoint.SetActive(false);
                 Checkpoints.Add(checkpoint);
             }
         }
@@ -54,7 +58,10 @@ namespace Aircraft {
                 agent.NextCheckpointIndex = Random.Range(0, Checkpoints.Count);
             }
             int previousCheckpointIndex = agent.NextCheckpointIndex - 1;
-            if (previousCheckpointIndex == -1) previousCheckpointIndex = Checkpoints.Count - 1;
+            if (previousCheckpointIndex == -1) 
+                previousCheckpointIndex = Checkpoints.Count - 1;
+            
+            CheckpointReset(previousCheckpointIndex, agent.NextCheckpointIndex);
 
             float startPosition = racePath.FromPathNativeUnits(previousCheckpointIndex, CinemachinePathBase.PositionUnits.PathUnits);
             Vector3 basePosition = racePath.EvaluatePosition(startPosition);
@@ -64,6 +71,11 @@ namespace Aircraft {
 
             agent.transform.position = basePosition + orientation * positionOffset;
             agent.transform.rotation = orientation;
+        }
+
+        public void CheckpointReset(int prev, int next) {
+            Checkpoints[prev].SetActive(false);
+            Checkpoints[next].SetActive(true);
         }
     }
 

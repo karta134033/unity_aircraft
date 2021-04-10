@@ -1,0 +1,29 @@
+{
+    "CNNLearning": {
+        "checkpoints": [
+            {
+                "steps": 499988,
+                "file_path": "results\\ppo_20210409\\CNNLearning\\CNNLearning-499988.nn",
+                "reward": -0.5598000051411054,
+                "creation_time": 1617962308.5416558
+            },
+            {
+                "steps": 808985,
+                "file_path": "results\\ppo_20210409\\CNNLearning\\CNNLearning-808985.nn",
+                "reward": -0.563013163444243,
+                "creation_time": 1617966092.5838573
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 808985,
+            "file_path": "results\\ppo_20210409\\CNNLearning.nn",
+            "reward": -0.563013163444243,
+            "creation_time": 1617966092.5838573
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.19.0",
+        "tensorflow_version": "1.15.5"
+    }
+}

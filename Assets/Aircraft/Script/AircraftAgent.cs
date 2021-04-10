@@ -7,6 +7,7 @@ using Unity.MLAgents.Sensors;
 
 namespace Aircraft {
     public class AircraftAgent : Agent {
+        public bool isCnn = false;  // 避免每次都random到任何一個checkpoint
         public float thrust = 100000f;
         public float pitchSpeed = 100f;
         public float yawSpeed = 100f;
@@ -42,7 +43,7 @@ namespace Aircraft {
             area = GetComponentInParent<AircraftArea>();
             rigidbody = GetComponent<Rigidbody>();
             trail = GetComponent<TrailRenderer>();
-
+            NextCheckpointIndex = 2;  // 預設從第一個checkpoint開始，所以next是2
             MaxStep = area.trainingMode ? 5000 : 0;
         }
 
@@ -50,7 +51,10 @@ namespace Aircraft {
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             trail.emitting = false;
-            area.ResetAgentPosition(agent: this, randomize: area.trainingMode);  // 在訓練時期會隨機分配到某個Checkpoint
+            if (isCnn)
+                area.ResetAgentPosition(agent: this, randomize: false);
+            else 
+                area.ResetAgentPosition(agent: this, randomize: area.trainingMode);  // 在訓練時期會隨機分配到某個Checkpoint
 
             if (area.trainingMode) nextStepTimeout = StepCount + stepTimeout;
         }
@@ -92,6 +96,8 @@ namespace Aircraft {
         }
 
         public override void CollectObservations(VectorSensor sensor) {  // 需要在Behavior Parameters的Vector Observation設定
+            if (isCnn)
+                return;
             sensor.AddObservation(transform.InverseTransformDirection(rigidbody.velocity));  // Vector3, 飛機的速度
             sensor.AddObservation(VectorToNextCheckpoint());  // Vector3
             Vector3 nextCheckpointForword = area.Checkpoints[NextCheckpointIndex].transform.forward;  // checkpoint 的方向
@@ -121,7 +127,9 @@ namespace Aircraft {
         }
 
         private void GotCheckpoint() {  // 當agent飛過checkpoint時會觸發
+            int PrevCheckpointIndex = NextCheckpointIndex;
             NextCheckpointIndex = (NextCheckpointIndex + 1) % area.Checkpoints.Count;  // area.Checkpoints.Count 確保Index不會超過上限
+            area.CheckpointReset(PrevCheckpointIndex, NextCheckpointIndex);  // 更新checkpoint
 
             if (area.trainingMode) {
                 AddReward(.5f);
