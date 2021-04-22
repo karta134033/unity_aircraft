@@ -1,0 +1,6 @@
+model_checkpoint_path: "CNNLearning-13999992.ckpt"
+all_model_checkpoint_paths: "CNNLearning-11999954.ckpt"
+all_model_checkpoint_paths: "CNNLearning-12499977.ckpt"
+all_model_checkpoint_paths: "CNNLearning-12999969.ckpt"
+all_model_checkpoint_paths: "CNNLearning-13499973.ckpt"
+all_model_checkpoint_paths: "CNNLearning-13999992.ckpt"

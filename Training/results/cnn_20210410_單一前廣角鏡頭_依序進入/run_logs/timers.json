@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1618039820",
+        "python_version": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\USER\\python_version\\py3.7.9\\Scripts\\mlagents-learn cnn_trainer_config.yaml --run-id=cnn_20210410 --force",
+        "mlagents_version": "0.19.0",
+        "mlagents_envs_version": "0.19.0",
+        "communication_protocol_version": "1.0.0",
+        "tensorflow_version": "1.15.0",
+        "numpy_version": "1.19.5",
+        "end_time_seconds": "1618039886"
+    },
+    "total": 66.066717,
+    "count": 1,
+    "self": 0.18640770000000373,
+    "children": {
+        "run_training.setup": {
+            "total": 0.00526150000000003,
+            "count": 1,
+            "self": 0.00526150000000003
+        },
+        "TrainerController.start_learning": {
+            "total": 65.87504779999999,
+            "count": 1,
+            "self": 0.00038219999997579635,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 65.874554,
+                    "count": 1,
+                    "self": 65.874554
+                },
+                "trainer_threads": {
+                    "total": 1.0000000116860974e-06,
+                    "count": 1,
+                    "self": 1.0000000116860974e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 0.0001105999999992946,
+                    "count": 1,
+                    "self": 0.0001105999999992946
+                }
+            }
+        }
+    }
+}

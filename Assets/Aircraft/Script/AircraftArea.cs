@@ -53,10 +53,12 @@ namespace Aircraft {
         public void ResetAgentPosition(AircraftAgent agent, bool randomize = false) {
             if (AircraftAgents == null) FindAircraftAgents();
             if (Checkpoints == null) CreateCheckpoints();
-
+            
             if (randomize) {
+                Checkpoints[agent.NextCheckpointIndex].SetActive(false);
                 agent.NextCheckpointIndex = Random.Range(0, Checkpoints.Count);
             }
+
             int previousCheckpointIndex = agent.NextCheckpointIndex - 1;
             if (previousCheckpointIndex == -1) 
                 previousCheckpointIndex = Checkpoints.Count - 1;

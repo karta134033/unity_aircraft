@@ -51,10 +51,7 @@ namespace Aircraft {
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
             trail.emitting = false;
-            if (isCnn)
-                area.ResetAgentPosition(agent: this, randomize: false);
-            else 
-                area.ResetAgentPosition(agent: this, randomize: area.trainingMode);  // 在訓練時期會隨機分配到某個Checkpoint
+            area.ResetAgentPosition(agent: this, randomize: area.trainingMode);  // 在訓練時期會隨機分配到某個Checkpoint
 
             if (area.trainingMode) nextStepTimeout = StepCount + stepTimeout;
         }

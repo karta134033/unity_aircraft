@@ -728,6 +728,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  isCnn: 0
   thrust: 100000
   pitchSpeed: 100
   yawSpeed: 100

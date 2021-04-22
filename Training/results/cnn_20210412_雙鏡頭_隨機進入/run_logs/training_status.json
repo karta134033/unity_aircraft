@@ -1,0 +1,47 @@
+{
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.19.0",
+        "tensorflow_version": "1.15.0"
+    },
+    "CNNLearning": {
+        "checkpoints": [
+            {
+                "steps": 98499977,
+                "file_path": "results\\cnn_20210412_\u96d9\u93e1\u982d_\u96a8\u6a5f\u9032\u5165\\CNNLearning\\CNNLearning-98499977.nn",
+                "reward": 23.83965434069219,
+                "creation_time": 1618958047.7566533
+            },
+            {
+                "steps": 98999903,
+                "file_path": "results\\cnn_20210412_\u96d9\u93e1\u982d_\u96a8\u6a5f\u9032\u5165\\CNNLearning\\CNNLearning-98999903.nn",
+                "reward": 20.60652683675289,
+                "creation_time": 1618960156.0957258
+            },
+            {
+                "steps": 99499925,
+                "file_path": "results\\cnn_20210412_\u96d9\u93e1\u982d_\u96a8\u6a5f\u9032\u5165\\CNNLearning\\CNNLearning-99499925.nn",
+                "reward": 25.414756311820103,
+                "creation_time": 1618962287.5097866
+            },
+            {
+                "steps": 99999954,
+                "file_path": "results\\cnn_20210412_\u96d9\u93e1\u982d_\u96a8\u6a5f\u9032\u5165\\CNNLearning\\CNNLearning-99999954.nn",
+                "reward": 25.06235669417815,
+                "creation_time": 1618964734.2343464
+            },
+            {
+                "steps": 100000082,
+                "file_path": "results\\cnn_20210412_\u96d9\u93e1\u982d_\u96a8\u6a5f\u9032\u5165\\CNNLearning\\CNNLearning-100000082.nn",
+                "reward": 25.06235669417815,
+                "creation_time": 1618964734.877434
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 100000082,
+            "file_path": "results\\cnn_20210412_\u96d9\u93e1\u982d_\u96a8\u6a5f\u9032\u5165\\CNNLearning.nn",
+            "reward": 25.06235669417815,
+            "creation_time": 1618964734.877434
+        }
+    }
+}
