@@ -197,7 +197,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104429762667395151}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &7686315508082029113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Width: 48
   m_Height: 48
   m_Grayscale: 0
-  m_Compression: 1
+  m_Compression: 0
 --- !u!114 &585221427231978453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Width: 48
   m_Height: 48
   m_Grayscale: 0
-  m_Compression: 1
+  m_Compression: 0
 --- !u!1 &6845798390503333459
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +927,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845798390503333459}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &4639549894760749862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,7 +1042,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7015472327826031607}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &6288940288433428286
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,47 @@
+{
+    "CNNLearning": {
+        "checkpoints": [
+            {
+                "steps": 48499878,
+                "file_path": "results\\hybrid_20210426\\CNNLearning\\CNNLearning-48499878.nn",
+                "reward": 26.574385025284506,
+                "creation_time": 1619614594.491419
+            },
+            {
+                "steps": 48999973,
+                "file_path": "results\\hybrid_20210426\\CNNLearning\\CNNLearning-48999973.nn",
+                "reward": 28.912203234784744,
+                "creation_time": 1619616736.901602
+            },
+            {
+                "steps": 49499899,
+                "file_path": "results\\hybrid_20210426\\CNNLearning\\CNNLearning-49499899.nn",
+                "reward": 29.500270128250122,
+                "creation_time": 1619618891.2821534
+            },
+            {
+                "steps": 49999995,
+                "file_path": "results\\hybrid_20210426\\CNNLearning\\CNNLearning-49999995.nn",
+                "reward": 29.208836793899536,
+                "creation_time": 1619621031.61287
+            },
+            {
+                "steps": 50267243,
+                "file_path": "results\\hybrid_20210426\\CNNLearning\\CNNLearning-50267243.nn",
+                "reward": 29.083636621634167,
+                "creation_time": 1619622192.99543
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 50267243,
+            "file_path": "results\\hybrid_20210426\\CNNLearning.nn",
+            "reward": 29.083636621634167,
+            "creation_time": 1619622192.99543
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.19.0",
+        "tensorflow_version": "1.15.0"
+    }
+}

@@ -25,7 +25,9 @@ namespace Aircraft {
         private TrailRenderer trail;
 
         private float nextStepTimeout;
-
+        
+        private float flyingTime;
+        private int checkpointCount = 0;  // 紀錄飛機飛過幾個checkpoint
         private bool frozen = false;  // 暫停與爆炸時會凍結住
 
         // 控制
@@ -40,13 +42,17 @@ namespace Aircraft {
         private bool boost;
 
         public override void Initialize() {
+            flyingTime = 0f;
+            checkpointCount = 0;
             area = GetComponentInParent<AircraftArea>();
             rigidbody = GetComponent<Rigidbody>();
             trail = GetComponent<TrailRenderer>();
             NextCheckpointIndex = 2;  // 預設從第一個checkpoint開始，所以next是2
             MaxStep = area.trainingMode ? 5000 : 0;
         }
-
+        void Update() {
+            flyingTime += Time.deltaTime;
+        }
         public override void OnEpisodeBegin() {  // 每當新的Training Episode開始時會觸發
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
@@ -127,7 +133,12 @@ namespace Aircraft {
             int PrevCheckpointIndex = NextCheckpointIndex;
             NextCheckpointIndex = (NextCheckpointIndex + 1) % area.Checkpoints.Count;  // area.Checkpoints.Count 確保Index不會超過上限
             area.CheckpointReset(PrevCheckpointIndex, NextCheckpointIndex);  // 更新checkpoint
-
+            checkpointCount++;
+            if (checkpointCount == area.Checkpoints.Count) {  // 代表飛機繞完一圈了
+                Debug.Log("飛行時間: " + flyingTime);
+                checkpointCount = 0;
+                flyingTime = 0;
+            }
             if (area.trainingMode) {
                 AddReward(.5f);
                 nextStepTimeout = StepCount + stepTimeout;  // 更新timeout 時間
