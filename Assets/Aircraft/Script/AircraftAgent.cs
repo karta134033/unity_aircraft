@@ -205,7 +205,6 @@ namespace Aircraft {
 
             area.ResetAgentPosition(agent: this);  // 退回到最近的檢查點
             yield return new WaitForSeconds(1f);
-
             ThawAgent();
         }
     }
